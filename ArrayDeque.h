@@ -19,6 +19,7 @@ private:
     size_type taille;
     
 public:
+    // méthodes et constructeur à implémenter DANS la classe (inline)
     ArrayDeque(size_type capacity = 0) : debut(0), taille(0), buffer(capacity)
     {
     }
