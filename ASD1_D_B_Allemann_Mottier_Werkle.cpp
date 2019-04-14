@@ -82,12 +82,12 @@ void testConstantCapacity() {
     fillDeque(dq, 12);
     emptyDequeFromFront(dq);
     fillDeque(dq, 12);
+    cout << dq.size();
     emptyDequeFromBack(dq);
 }
 
 void testVariableCapacity() {
-    cout << endl << "Test variable capacity" << endl;
-    
+    cout << endl << "Test variable capacity" << endl;    
     ArrayDeque<int> dq;
     fillDeque(dq,7);
     emptyDequeFromFront(dq);
