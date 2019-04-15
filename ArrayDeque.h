@@ -91,12 +91,12 @@ public:
       debut = posInsertion;
    }
 
-   void pop_back() {
+   void pop_back() { // TODO : Vérifier si taille >0
       taille--;
    }
 
    void pop_front() {
-      debut = getBufferPosition(debut + 1);
+      debut = getBufferPosition(debut + 1);  // TODO : Vérifier si taille >0
       taille--;
    }
 
