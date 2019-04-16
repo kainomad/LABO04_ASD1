@@ -68,7 +68,7 @@ public:
       {
          increaseCapacity();
       }
-      size_t bufferPosition = getBufferPosition(debut + taille - 1);
+      size_type bufferPosition = getBufferPosition(debut + taille - 1);
       buffer.at(bufferPosition) = val;
    }
 
@@ -78,7 +78,7 @@ public:
          increaseCapacity();
       }
 
-      size_t posInsertion = 0;
+      size_type posInsertion = 0;
       if (debut == 0)
       {
          posInsertion = capacity() - 1;
@@ -91,25 +91,31 @@ public:
       debut = posInsertion;
    }
 
-   void pop_back() { // TODO : Vérifier si taille >0
-      taille--;
+   void pop_back() {
+      if (taille > 0)
+      {
+         taille--;
+      }
    }
 
    void pop_front() {
-      debut = getBufferPosition(debut + 1);  // TODO : Vérifier si taille >0
-      taille--;
+      if (taille > 0)
+      {
+         debut = getBufferPosition(debut + 1);
+         taille--;
+      }
    }
 
    void increaseCapacity() {
       // Copie des valeurs du vecteur de base (copie en 0 de l'indice logique 0)
       std::vector<value_type> temp(capacity());
-      for (size_t i = 0; i < taille-1; i++)
+      for (size_type i = 0; i < taille - 1; i++)
       {
-         size_t bufferPosition = getBufferPosition(debut + i);
+         size_type bufferPosition = getBufferPosition(debut + i);
          temp.at(i) = buffer.at(bufferPosition);
       }
-      
-      size_t newCapacity = 0;
+
+      size_type newCapacity = 0;
       if (capacity() > 0)
       {
          newCapacity = capacity() * 2;
@@ -125,7 +131,7 @@ public:
       debut = 0;
    }
 
-   size_t getBufferPosition(size_t indice) const {
+   size_type getBufferPosition(size_type indice) const {
       if (indice >= capacity())
       {
          indice = indice % capacity();
