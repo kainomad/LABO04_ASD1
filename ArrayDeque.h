@@ -77,7 +77,6 @@ public:
       {
          increaseCapacity();
       }
-
       size_type posInsertion = 0;
       if (debut == 0)
       {
@@ -115,15 +114,13 @@ public:
          temp.at(i) = buffer.at(bufferPosition);
       }
 
-      size_type newCapacity = 0;
+      size_type newCapacity = 1;
+       // Par défaut à 1
       if (capacity() > 0)
       {
          newCapacity = capacity() * 2;
       }
-      else
-      {
-         newCapacity = 1;
-      }
+       
       temp.resize(newCapacity);
 
       // Échange des vecteurs
