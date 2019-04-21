@@ -6,8 +6,14 @@ using namespace std;
 void testAPI() {
     cout << "Test API" << endl;
     
-    ArrayDeque<int> dq(10);
+   
     
+    ArrayDeque<int> dq(0);
+    
+    
+     cout << "test jw" << endl;
+    cout << dq.front() << endl;
+
     cout << " size " << dq.size() << endl;
     cout << " capacity " << dq.capacity() << endl;
     cout << " empty " << boolalpha << dq.empty() << endl;
