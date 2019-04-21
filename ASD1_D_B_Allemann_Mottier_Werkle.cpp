@@ -9,7 +9,8 @@ void testAPI() {
    
     
     ArrayDeque<int> dq(10);
-    
+//    cout << "test jw" << endl;
+//    cout << dq.front();
     cout << " size " << dq.size() << endl;
     cout << " capacity " << dq.capacity() << endl;
     cout << " empty " << boolalpha << dq.empty() << endl;

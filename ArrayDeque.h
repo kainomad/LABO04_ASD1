@@ -16,13 +16,6 @@
 #include <string.h>
 //#include <stdexcept>
 
-class StackEmptyException : public std::out_of_range {
-public:
-    StackEmptyException(const std::string& classe,
-                        const std::string& what_arg = "l'index indique depasse la taille du tableau") noexcept
-    : out_of_range(what_arg) {}
-};
-
 template < class T >
 class ArrayDeque {
 public:
@@ -56,40 +49,33 @@ public:
     }
     
     value_type& back() {
-        try{
-            return buffer.at(taille - 1);
+        if (buffer.empty()){
+            throw;
         }
-        catch (std::out_of_range& e) {
-            throw StackEmptyException("back()");
-        }
+        return buffer.at(taille - 1);
     }
     
     const value_type& back() const {
-        try{
-            return buffer.at(taille - 1);
+        if (buffer.empty()){
+            throw;
         }
-        catch (std::out_of_range& e) {
-            throw StackEmptyException("const back()");
-        }
+        return buffer.at(taille - 1);
     }
     
-    value_type& front() { // TODO ? Test si le buffer est vide ?
-        try{
-            return buffer.at(debut);
+    value_type& front() {
+        if (buffer.empty()){
+            throw;
         }
-        catch (std::out_of_range& e) {
-            throw StackEmptyException("front()");
-        }
+        return buffer.at(debut);
     }
     
-    const value_type& front() const { // TODO ? Test si le buffer est vide ?
-        try{
-            return buffer.at(debut);
+    const value_type& front() const {
+        if (buffer.empty()){
+            throw;
         }
-        catch (std::out_of_range& e) {
-        throw StackEmptyException("const front()");
-        }
+        return buffer.at(debut);
     }
+    
     
     void push_back(value_type val) {
         if (taille++ == capacity())
@@ -106,7 +92,7 @@ public:
             increaseCapacity();
         }
         size_type posInsertion = 0;
-        if (debut == 0)
+        if (!debut)
         {
             posInsertion = capacity() - 1;
         }
