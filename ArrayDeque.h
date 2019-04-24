@@ -1,7 +1,7 @@
 /**
  \file ArrayDeque.h
  \author Allemann Alexis, Alexandre Mottier, Johann Werkle
- \date 11.04.2019 - 17.04.2019
+ \date 11.04.2019 - 28.04.2019
  \brief Fichier d'entête de la classe ArrayDeque
  \details La déclaration ainsi que l'implémentation de la classe sont définis dans ce
  *       fichier
@@ -48,28 +48,28 @@ public:
         return taille == 0;
     }
     
-    value_type& back() {
+    reference back() {
         if (buffer.empty()){
             throw;
         }
         return buffer.at(taille - 1);
     }
     
-    const value_type& back() const {
+    const_reference back() const {
         if (buffer.empty()){
             throw;
         }
         return buffer.at(taille - 1);
     }
     
-    value_type& front() {
+    reference front() {
         if (buffer.empty()){
             throw;
         }
         return buffer.at(debut);
     }
     
-    const value_type& front() const {
+    const_reference front() const {
         if (buffer.empty()){
             throw;
         }
